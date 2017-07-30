@@ -47,10 +47,6 @@ from resources.medicine import Medicine
 api.add_resource(Medicine, '/api/medicines', '/api/medicines/<int:medicine_id>')
 from resources.medicine_norm import MedicineNorm
 api.add_resource(MedicineNorm, '/api/medicines', '/api/medicines/<int:medicine_id>')
-from resources.medicine import Medicine
-api.add_resource(Medicine, '/api/medicines', '/api/medicines/<int:medicine_id>')
-from resources.medicine import Medicine
-api.add_resource(Medicine, '/api/medicines', '/api/medicines/<int:medicine_id>')
 from resources.clinic import Clinic
 api.add_resource(Clinic, '/api/clinics', '/api/clinics/<int:clinic_id>')
 from resources.hairshop import HairShop
