@@ -19,7 +19,7 @@ api = Api(app)
 jwt = JWTManager(app)
 
 db_user = "admin"
-db_pass = "wjdrbdud1`"
+db_pass = "chaeum!01"
 db_url = "testwebinstance.ciowpdvbzwrs.ap-northeast-2.rds.amazonaws.com"
 db_name = "chaeumTest"
 
