@@ -1,0 +1,48 @@
+<!-- review write popup -->
+<div class="popup_review" style="display:none;">
+  <!-- header -->
+  <div class="popup_header">
+    <p class="b1 bc1">리뷰쓰기</p>
+    <a href="#" class="close"></a>
+  </div>
+
+  <!-- body -->
+  <div class="popup_body">
+    <!-- review score -->
+    <div class="review_score">
+      <div class="review_score_text">
+        <p class="b1 bc1">평가하기</p>
+        {% set size = 3 %}
+        {% for value in range(1, size+1) %}
+        <span class="icon_review_score" value="{{ value }}"></span>
+        {% endfor %}
+        {% for value in range(size+1, 6) %}
+        <span class="icon_review_score off" value="{{ value }}"></span>
+        {% endfor %}
+      </div>
+      <img src="{{ url_for('static', filename='images/sample_review_prd_image.png') }}" />
+
+    </div>
+
+    <!-- review text -->
+    <div class="review_text">
+      <p class="b1 bc1">리뷰쓰기</p>
+      <textarea class="b1 bc1 bd" placeholder="리뷰내용(최소 10자/최대2000자)을 입력해주세요." maxlength="2000"></textarea>
+    </div>
+
+    <!-- review image -->
+    <div class="review_image">
+      <p class="b1 bc1">이미지 파일첨부</p>
+      <div class="review_images">
+        <img src="{{ url_for('static', filename='images/sample_review_upload_image.png') }}" />
+        <button class="btn_upload_image"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="popup_footer">
+    <button class="normal b1 close">취소</button>
+    <button class="normal b1 post">등록</button>
+  </div>
+</div>

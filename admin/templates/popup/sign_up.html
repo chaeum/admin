@@ -1,0 +1,207 @@
+<!-- sign up popup -->
+<div class="popup_sign_up" style="display:none;">
+  <!-- header -->
+  <div class="popup_header">
+    <p class="b1 bc1">회원가입</p>
+    <a href="#" class="close"></a>
+  </div>
+
+  <div class="popup_multi account">
+    <!-- body - account -->
+    <div class="popup_body">
+      <div class="progress">
+        <div class="tab b2 bc1 on">계정선택</div>
+        <div class="tab b2 bc1">성별/나이</div>
+        <div class="tab b2 bc1">지역</div>
+        <div class="tab b2 bc1">닉네임</div>
+        <div class="tab b2 bc1">약관동의</div>
+        <div class="tab b2 bc1">가입완료</div>
+      </div>
+      <div class="btn_div">
+        <div class="btn_wrap">
+          <button type="popup_body_swap" class="kakao b1" swapto="sexbirth">카카오톡으로 가입</button>
+          <span class="icon_kakao"></span>
+        </div>
+      </div>
+      <div class="btn_div">
+        <div class="btn_wrap">
+          <button type="popup_body_swap" class="naver b1" swapto="sexbirth">네이버계정으로 로그인</button>
+          <span class="icon_naver"></span>
+        </div>
+      </div>
+      <div class="btn_div">
+        <div class="btn_wrap">
+          <button type="popup_body_swap" class="email b1" swapto="sexbirth">이메일 계정으로 가입</button>
+          <span class="icon_email"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup_multi sexbirth">
+    <!-- body - sex & birth -->
+    <div class="popup_body">
+      <div class="progress">
+        <div class="tab b2 bc1">계정선택</div>
+        <div class="tab b2 bc1 on">성별/나이</div>
+        <div class="tab b2 bc1">지역</div>
+        <div class="tab b2 bc1">닉네임</div>
+        <div class="tab b2 bc1">약관동의</div>
+        <div class="tab b2 bc1">가입완료</div>
+      </div>
+      <div class="sex">
+        <p class="b1 bc1">성별을 선택해주세요</p>
+        <div class="btn_div">
+          <div class="btn_wrap">
+            <input id="radio_male" type="radio" name="sex" value="male" />
+            <label for="radio_male" class="b1 bc1 bd">남</label>
+          </div>
+        </div>
+        <div class="btn_div">
+          <div class="btn_wrap">
+            <input id="radio_female" type="radio" name="sex" value="female" />
+            <label for="radio_female" class="b1 bc1 bd">여</label>
+          </div>
+        </div>
+      </div>
+      <div class="birth">
+        <p class="b1 bc1">출생연도를 선택해주세요</p>
+        <div class="select_div">
+          <select>
+            {% for value in range(2017, 1900, -1) %}
+            <option value="{{ value }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="popup_footer">
+      <div class="btn_wrap">
+        <button type="popup_body_swap" class="normal b1" swapto="account">＜ 이전</button>
+        <button type="popup_body_swap" class="normal b1" swapto="district">다음 ＞</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup_multi district">
+    <!-- body - district -->
+    <div class="popup_body">
+      <div class="progress">
+        <div class="tab b2 bc1">계정선택</div>
+        <div class="tab b2 bc1">성별/나이</div>
+        <div class="tab b2 bc1 on">지역</div>
+        <div class="tab b2 bc1">닉네임</div>
+        <div class="tab b2 bc1">약관동의</div>
+        <div class="tab b2 bc1">가입완료</div>
+      </div>
+      <div class="state">
+        <p class="b1 bc1">현거주지의 시/도를 선택해주세요</p>
+        <div class="select_div">
+          <select>
+            {% set state = ["서울특별시", "경기도"] %}
+            {% for value in state %}
+            <option value="{{ loop.index }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="city">
+        <p class="b1 bc1">시/군/구를 선택해주세요</p>
+        <div class="select_div">
+          <select>
+            {% set city = ["강남구", "동작구"] %}
+            {% for value in city %}
+            <option value="{{ loop.index }}">{{ value }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="popup_footer">
+      <div class="btn_wrap">
+        <button type="popup_body_swap" class="normal b1" swapto="sexbirth">＜ 이전</button>
+        <button type="popup_body_swap" class="normal b1" swapto="nickname">다음 ＞</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup_multi nickname">
+    <!-- body - nickname -->
+    <div class="popup_body">
+      <div class="progress">
+        <div class="tab b2 bc1">계정선택</div>
+        <div class="tab b2 bc1">성별/나이</div>
+        <div class="tab b2 bc1">지역</div>
+        <div class="tab b2 bc1 on">닉네임</div>
+        <div class="tab b2 bc1">약관동의</div>
+        <div class="tab b2 bc1">가입완료</div>
+      </div>
+      <p class="b1 bc1">사용하고자 하는 닉네임을 작성하시고, 중복체크 해주세요<br/>8자 이내 특수문자 사용불가</p>
+      <div class="input_wrap">
+        <input type="text" class="b1 bc1 bd" placeholder="16byte 이내" maxlength="16" />
+        <button type="submit" class="normal b1">중복체크</button>
+      </div>
+    </div>
+    <div class="popup_footer">
+      <div class="btn_wrap">
+        <button type="popup_body_swap" class="normal b1" swapto="district">＜ 이전</button>
+        <button type="popup_body_swap" class="normal b1" swapto="agreement">다음 ＞</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup_multi agreement">
+    <!-- body - term of agreement -->
+    <div class="popup_body">
+      <div class="progress">
+        <div class="tab b2 bc1">계정선택</div>
+        <div class="tab b2 bc1">성별/나이</div>
+        <div class="tab b2 bc1">지역</div>
+        <div class="tab b2 bc1">닉네임</div>
+        <div class="tab b2 bc1 on">약관동의</div>
+        <div class="tab b2 bc1">가입완료</div>
+      </div>
+      <textarea class="b1 bc1 bd" readonly>이용약관</textarea>
+      <div class="checkbox_wrap">
+        <input id="agreement1" type="checkbox" />
+        <label for="agreement1"></label>
+        <span class="b1 bc1">내용 확인 및 동의합니다</span>
+      </div>
+      <textarea class="b1 bc1 bd" readonly>개인정보 수집 및 이용안내</textarea>
+      <div class="checkbox_wrap">
+        <input id="agreement2" type="checkbox" />
+        <label for="agreement2"></label>
+        <span class="b1 bc1">내용 확인 및 동의합니다</span>
+      </div>
+    </div>
+    <div class="popup_footer">
+      <div class="btn_wrap">
+        <button type="popup_body_swap" class="normal b1" swapto="nickname">＜ 이전</button>
+        <button type="popup_body_swap" class="normal b1" swapto="complete">다음 ＞</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup_multi complete">
+    <!-- body - complete -->
+    <div class="popup_body">
+      <div class="progress">
+        <div class="tab b2 bc1">계정선택</div>
+        <div class="tab b2 bc1">성별/나이</div>
+        <div class="tab b2 bc1">지역</div>
+        <div class="tab b2 bc1">닉네임</div>
+        <div class="tab b2 bc1">약관동의</div>
+        <div class="tab b2 bc1 on">가입완료</div>
+      </div>
+      <div class="img_wrap">
+        <img src="{{ url_for('static', filename='images/ico_logo.png') }}" />
+        <p class="b1 bc1">축하합니다!<br/>채움 가입이 완료되었습니다</p>
+      </div>
+    </div>
+    <div class="popup_footer">
+      <div class="btn_wrap">
+        <button type="popup_swap" class="normal btn_login b1" swapto="sign_in">LOGIN</button>
+      </div>
+    </div>
+  </div>
+</div>

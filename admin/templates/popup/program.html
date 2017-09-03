@@ -1,0 +1,35 @@
+<!-- program description popup -->
+<div class="popup_program" style="display:none;">
+  <!-- header -->
+  <div class="popup_header">
+    <p class="b1 bc1">프로그램 소개</p>
+    <a href="#" class="close"></a>
+  </div>
+
+  <!-- body -->
+  <div class="popup_body">
+    <div class="program_desc">
+      <img src="{{ url_for('static', filename='images/sample_program_popup.png') }}" />
+      <div class="program_desc_text">
+        <p class="h2 bc1">지압 오일 마사지</p>
+        <p class="b2 bc1">8,000원 (비용 별도)</p>
+      </div>
+    </div>
+    {% set l = range(1, 5) %}
+    {% for value in l %}
+    <div class="program_steps">
+      <div class="program_step">
+        <img src="{{ url_for('static', filename=('images/sample_program_step_%d.png' % value)) }}" />
+        <div class="program_step_text">
+          <p class="b2 bc1">STEP{{value}} 스트레스 팩스 컴포지션 오일<br/>심신의 피로가 풀리고 윌니스를 경험할 수 있는 스트레스 리츄얼 서비스입니다.</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- footer -->
+  <div class="popup_footer">
+    <button class="normal b1 close">확인</button>
+  </div>
+</div>

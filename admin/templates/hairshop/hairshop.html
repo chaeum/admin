@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/hairshop.css') }}" />
+
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/hairshop.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="bg_wrap">
+  <div class="wrap">
+    <div class="padding_wrap">
+      <!-- title image -->
+      <img src="{{ url_for('static', filename='images/sample_hairshop_title.png') }}" class="img_title"/>
+
+      <!-- sorting type -->
+      <div class="sort_type">
+        <select>
+          <option value="popularity">인기순</option>
+          <option value="name">이름순</option>
+          <option value="point">평점순</option>
+        </select>
+      </div>
+
+      <!-- item list -->
+      <div class="list">
+        <div>
+          {% set l = range(0, 12) %}
+          {% for value in l %}
+          {% set cl = 'item hover_shadow' %}
+          {% if loop.index > 0 and loop.index % 4 == 0 %}
+          {% set cl = 'item hover_shadow last' %}
+          {% endif %}
+          <a href="/hairshops/1" class="{{ cl }}">
+            <div class="prod_img">
+              <img src="{{ url_for('static', filename='images/sample_hairshop.png') }}" />
+            </div>
+            <div class="info">
+              <div class="b2 bc1">미용실</div>
+              <div class="name h2 bc1">주노 헤어</div>
+              <div class="b2 bc3"><img src="{{ url_for('static', filename='images/ico_review.png') }}" />리뷰 평점 <span class="ac3">4.5</span>/5.0</div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- item pagination -->
+      <div class="pagination_wrap">
+        <div class="pagination">
+          <a href="#" class="left"></a>
+          {% set p = range(1, 7) %}
+          {% set cur = 1 %}
+          {% for index in p %}
+          {% set cl = 'num b1 bc3' %}
+          {% if index == cur %}
+          {% set cl = 'num b1 ac2' %}
+          {% endif %}
+          <a href="#" class="{{cl}}">{{index}}</a>
+          {% endfor %}
+          <a href="#" class="right"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

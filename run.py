@@ -5,7 +5,7 @@ PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
-from chaeum import app
+from admin import app
 import mysql.connector
 
 # from flask import Flask, Blueprint, request
@@ -22,7 +22,7 @@ import mysql.connector
 
 # app.config['MYSQL_DATABASE_USER'] = 'admin'
 # app.config['MYSQL_DATABASE_PASSWORD'] = 'wjdrbdud1`'
-# app.config['MYSQL_DATABASE_DB'] = 'chaeum'
+# app.config['MYSQL_DATABASE_DB'] = 'admin'
 # app.config['MYSQL_DATABASE_HOST'] = 'testwebinstance.ciowpdvbzwrs.ap-northeast-2.rds.amazonaws.com'
 # app.config['MYSQL_DATABASE_PORT'] = 3306
 #

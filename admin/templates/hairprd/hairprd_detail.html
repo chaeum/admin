@@ -1,0 +1,144 @@
+{% extends "main.html" %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/hairprd.css') }}" />
+
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/hairprd.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="bg_wrap bg_white">
+  <div class="wrap">
+    <div class="padding_wrap">
+      <div class="prd_header">
+        <div class="prd_info">
+          <!-- product images -->
+          <div class="prd_images">
+            <img src="{{ url_for('static', filename='images/sample_detail_main.png') }}" class="main_image" />
+            <div class="sub_images">
+              <img src="{{ url_for('static', filename='images/sample_detail_sub_1.png') }}" class="sub_image first" />
+              <img src="{{ url_for('static', filename='images/sample_detail_sub_2.png') }}" class="sub_image" />
+              <img src="{{ url_for('static', filename='images/sample_detail_sub_3.png') }}" class="sub_image" />
+            </div>
+          </div>
+
+          <!-- product texts -->
+          <div class="prd_texts">
+            <p class="h1 bc1">[모제림] 모제림 탈모 샴푸</p>
+            <p class="b2 bc1">제품에 대한 한줄 코멘트</p>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">가격정보</span>
+              <span class="b2 bc1">25,000 ~ 32,000원</span>
+            </div>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">브랜드</span>
+              <span class="b2 bc1">모제림</span>
+            </div>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">중량/용량</span>
+              <span class="b2 bc1">120ml</span>
+            </div>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">주요성분</span>
+              <span class="b2 bc1">단백질, 비타민, 지방 등 (전성분 하단 상세정보 참고)</span>
+            </div>
+            <div class="prd_text_other">
+              <span class="review b2 bc3"><img src="{{ url_for('static', filename='images/ico_review.png') }}" />리뷰 평점 <span class="ac3">4.5</span>/5.0</span></span>
+              <span class="like b2 bc3"><a href="#" class="ico_like"></a>좋아요</span>
+              <button class="btn_review b1">리뷰쓰기</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab buttons -->
+        <div class="prd_tabs">
+          <button class="tab on bd b2 first" swapto="desc">제품설명</button><button class="tab bd b2" swapto="image">제품이미지</button><button class="tab bd b2" swapto="detail">상세정보</button><button class="tab bd b2" swapto="review">리뷰</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg_wrap">
+  <div class="wrap">
+    <div class="padding_wrap">
+      <!-- product description -->
+      <div class="prd_body" name="desc">
+        <img src="{{ url_for('static', filename='images/sample_detail_prd_desc.png') }}" />
+      </div>
+
+      <!-- product image -->
+      <div class="prd_body" name="image" style="display:none;">
+        <img src="{{ url_for('static', filename='images/sample_detail_prd_image.png') }}" />
+      </div>
+
+      <!-- product detail -->
+      <div class="prd_body" name="detail" style="display:none;">
+        <table class="detail" cellspacing="0">
+          <tr class="first">
+            <th>용량 및 중량</th>
+            <td>500</td>
+          </tr>
+          <tr>
+            <th>제품 주요 사양</th>
+            <td>상세페이지 참조</td>
+          </tr>
+          <tr>
+            <th>사용기한 또는 개봉후 사용기간</th>
+            <td>~2019.07.21까지 / 개봉 후 1년 이내 사용권장</td>
+          </tr>
+          <tr>
+            <th>사용방법</th>
+            <td>온수로 모발 및 두피를 충분히 적신 후 3~5ml로 두피를 골고루 마사지합니다. 거품을 낸 상태에서 3분 이상 기다린 후 깨끗이 세척합니다.</td>
+          </tr>
+          <tr>
+            <th>전성분</th>
+            <td>[주성분] <a href="#">비오틴</a>, 덱스판테놀, 니코틴산아미드, 징크피리치온, [컨셉 성분] 맥주효모, 카퍼트리펩타이드-1, 인삼추출물, 서양측백나무잎 추출물, 상백피추출물, 구절초추출물, 구기자추출물, 석창포추출물, 창이자추출물, 감초추출물, 박하추출물, 편백수, 동백유, 올리브유, 검정콩추출물, 히드로라이즈드케라틴, 히드로라이즈드실크, 발효쌀겨출출물, 어성초출물, 자소엽엑스, 녹차엑스, 시스테인, 은행추출물, 고삼엑스, 작약엑스</td>
+          </tr>
+          <tr>
+            <th>기능성 화장품 심사필여부</th>
+            <td>해당사항 없음</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- product review -->
+      <div class="prd_body" name="review" style="display:none;">
+        <table class="review" cellspacing="0">
+          <tr>
+            <th class="first" style="width:72px;">번호</th>
+            <th style="width:72px;">평점</th>
+            <th>내용</th>
+            <th style="width:129px">사용자</th>
+            <th style="width:129px">등록일</th>
+          </tr>
+          {% set l = range(1,4) %}
+          {% for value in l %}
+          <tr>
+            <td class="first">1</td>
+            <td>4.0</td>
+            <td class="text">해당사항 없음</td>
+            <td>닉네임</td>
+            <td>2017.08.12</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <!-- review pagination -->
+        <div class="pagination_wrap">
+          <div class="pagination">
+            <a href="#" class="left"></a>
+            {% set p = range(1, 7) %}
+            {% set cur = 1 %}
+            {% for index in p %}
+            {% set cl = 'num b1 bc3' %}
+            {% if index == cur %}
+            {% set cl = 'num b1 ac2' %}
+            {% endif %}
+            <a href="#" class="{{cl}}">{{index}}</a>
+            {% endfor %}
+            <a href="#" class="right"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

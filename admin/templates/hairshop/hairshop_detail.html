@@ -1,0 +1,149 @@
+{% extends "main.html" %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/hairshop.css') }}" />
+
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/hairshop.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="bg_wrap bg_white">
+  <div class="wrap">
+    <div class="padding_wrap">
+      <div class="prd_header">
+        <div class="prd_info">
+          <!-- hairshop images -->
+          <div class="prd_images">
+            <img src="{{ url_for('static', filename='images/sample_detail_main.png') }}" class="main_image" />
+            <div class="sub_images">
+              <img src="{{ url_for('static', filename='images/sample_detail_sub_1.png') }}" class="sub_image first" />
+              <img src="{{ url_for('static', filename='images/sample_detail_sub_2.png') }}" class="sub_image" />
+              <img src="{{ url_for('static', filename='images/sample_detail_sub_3.png') }}" class="sub_image" />
+            </div>
+          </div>
+
+          <!-- hairshop texts -->
+          <div class="prd_texts">
+            <p class="h1 bc1">주노 헤어</p>
+            <p class="b2 bc1">제품에 대한 한줄 코멘트</p>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">위치</span>
+              <span class="b2 bc1">서울 강남구 삼성동 120-19</span>
+            </div>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">운영시간</span>
+              <span class="b2 bc1">10:00 - 22:00</span>
+            </div>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">연락처</span>
+              <span class="b2 bc1">010-4848-1717</span>
+            </div>
+            <div class="prd_text_info">
+              <span class="prd_text_name b2 bc1">주요 프로그램</span>
+              <span class="b2 bc1">비타민 케어, 스팀 마사지, 쿨링 등</span>
+            </div>
+            <div class="prd_text_other">
+              <span class="review b2 bc3"><img src="{{ url_for('static', filename='images/ico_review.png') }}" />리뷰 평점 <span class="ac3">4.5</span>/5.0</span></span>
+              <span class="like b2 bc3"><a href="#" class="ico_like"></a>좋아요</span>
+              <button class="btn_review b1">리뷰쓰기</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- tab buttons -->
+        <div class="prd_tabs">
+          <button class="tab on bd b2 first" swapto="desc">미용실 소개</button><button class="tab bd b2" swapto="reserv">예약 도우미</button><button class="tab bd b2" swapto="program">프로그램 소개</button><button class="tab bd b2" swapto="review">리뷰</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg_wrap">
+  <div class="wrap">
+    <div class="padding_wrap">
+      <!-- hairshop description -->
+      <div class="prd_body" name="desc">
+        <img src="{{ url_for('static', filename='images/sample_hairshop_desc.png') }}" />
+      </div>
+
+      <!-- hairshop reservation description -->
+      <div class="prd_body" name="reserv" style="display:none;">
+        <table class="detail" cellspacing="0">
+          <tr class="first">
+            <th>전화예약 소개</th>
+            <td>1. 프로그램 소개 - 원하시는 프로그램을 선택합니다<br/>2. 전화예약 - 전화를 걸어 원하시는 날짜와 시간을 조율하여 예약확정을 받습니다<br/>3. 방문 - 예약한 날짜와 시간에 매장에서 방문을 받습니다</td>
+          </tr>
+          <tr>
+            <th>인터넷예약 순서</th>
+            <td>준비중 입니다</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- hairshop program -->
+      <div class="prd_body" name="program" style="display:none;">
+        <!-- item list -->
+        <div class="list">
+          <div>
+            {% set l = range(0, 12) %}
+            {% for value in l %}
+            {% set cl = 'item hover_shadow' %}
+            {% if loop.index > 0 and loop.index % 4 == 0 %}
+            {% set cl = 'item hover_shadow last' %}
+            {% endif %}
+            <a href="#" class="{{ cl }}">
+              <div class="prod_img">
+                <img src="{{ url_for('static', filename='images/sample_program.png') }}" />
+              </div>
+              <div class="info">
+                <div class="b2 bc1">주노 헤어</div>
+                <div class="name h2 bc1">헤어 스파</div>
+                <div class="b2 bc3">8,000원 (비용 별도)</div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- hairshop review -->
+      <div class="prd_body" name="review" style="display:none;">
+        <table class="review" cellspacing="0">
+          <tr>
+            <th class="first" style="width:72px;">번호</th>
+            <th style="width:72px;">평점</th>
+            <th>내용</th>
+            <th style="width:129px">사용자</th>
+            <th style="width:129px">등록일</th>
+          </tr>
+          {% set l = range(1,4) %}
+          {% for value in l %}
+          <tr>
+            <td class="first">1</td>
+            <td>4.0</td>
+            <td class="text">해당사항 없음</td>
+            <td>닉네임</td>
+            <td>2017.08.12</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <!-- review pagination -->
+        <div class="pagination_wrap">
+          <div class="pagination">
+            <a href="#" class="left"></a>
+            {% set p = range(1, 7) %}
+            {% set cur = 1 %}
+            {% for index in p %}
+            {% set cl = 'num b1 bc3' %}
+            {% if index == cur %}
+            {% set cl = 'num b1 ac2' %}
+            {% endif %}
+            <a href="#" class="{{cl}}">{{index}}</a>
+            {% endfor %}
+            <a href="#" class="right"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

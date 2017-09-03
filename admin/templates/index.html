@@ -1,0 +1,73 @@
+{% extends "main.html" %}
+{% block head %}
+{{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}" />
+
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+{% endblock %}
+{% block content %}
+<banner>
+  <img src="{{ url_for('static', filename='images/banner.png') }}" />
+</banner>
+<div class="bg_wrap">
+  <div class="wrap">
+    <!-- Top Picks -->
+    <div class="pick">
+      <div class="title">
+        <div class="title_img">
+          <img src="{{ url_for('static', filename='images/title_top_picks.png') }}" />
+        </div>
+        <div class="title_text b2 bc1">유저들의 평점을 바탕으로 선정되는 아이템</div>
+      </div>
+      <div class="list">
+        {% set l = range(0, 4) %}
+        {% for value in l %}
+          {% set cl = 'item hover_shadow' %}
+          {% if value == l[-1] %}
+            {% set cl = 'item hover_shadow last' %}
+          {% endif %}
+        <a href="/hairprds/1" class="{{ cl }}">
+          <div class="prod_img">
+            <img src="{{ url_for('static', filename='images/sample_prod.png') }}" />
+          </div>
+          <div class="info">
+            <div class="b2 bc1">헤어제품</div>
+            <div class="name h2 bc1">모제림닥터샴푸</div>
+            <div class="b2 bc3"><img src="{{ url_for('static', filename='images/ico_review.png') }}" />리뷰 평점 <span class="ac3">4.5</span>/5.0</div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Chaeum Pick -->
+    <div class="pick c_pick">
+      <div class="title">
+        <div class="title_img">
+          <img src="{{ url_for('static', filename='images/title_chaeums_pick.png') }}" />
+        </div>
+        <div class="title_text b2 bc1">발모 준비생들을 위해 채움이 엄선한 아이템</div>
+      </div>
+      <div class="list">
+        {% set l = range(0, 3) %}
+        {% for value in l %}
+        {% set cl = 'item hover_shadow' %}
+        {% if value == l[-1] %}
+        {% set cl = 'item hover_shadow last' %}
+        {% endif %}
+        <a href="#" class="{{ cl }}">
+          <div class="prod_img">
+            <img src="{{ url_for('static', filename='images/sample_clinic.png') }}" />
+          </div>
+          <div class="info">
+            <div class="b2 bc1">헤어제품</div>
+            <div class="name h2 bc1">모제림닥터샴푸</div>
+            <div class="b2 bc3"><img src="{{ url_for('static', filename='images/ico_review.png') }}" />리뷰 평점 <span class="ac3">4.5</span>/5.0</div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

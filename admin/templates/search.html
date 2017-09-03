@@ -1,0 +1,74 @@
+{% extends "main.html" %}
+{% block head %}
+{{ super() }}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/search.css') }}" />
+
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/search.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="bg_wrap">
+  <div class="wrap">
+    <div class="result">
+      <div class="title">
+        <div class="text">
+          <div class="h1 ac2">{{ query }}</div>
+          <div class="b2 bc5">검색결과<span class="b2 ac2">10</span></div>
+        </div>
+        <div class="category">
+          <select>
+            <option value="all">전체</option>
+          </select>
+        </div>
+      </div>
+      <div class="list">
+        <!-- found something -->
+        <div>
+          {% set l = range(0, 10) %}
+          {% for value in l %}
+            {% set cl = 'item hover_shadow' %}
+            {% if loop.index > 0 and loop.index % 4 == 0 %}
+              {% set cl = 'item hover_shadow last' %}
+            {% endif %}
+          <a href="#" class="{{ cl }}">
+            <div class="prod_img">
+              <img src="{{ url_for('static', filename='images/sample_prod.png') }}" />
+            </div>
+            <div class="info">
+              <div class="b2 bc1">헤어제품</div>
+              <div class="name h2 bc1">모제림닥터샴푸</div>
+              <div class="b2 bc3"><img src="{{ url_for('static', filename='images/ico_review.png') }}" />리뷰 평점 <span class="ac3">4.5</span>/5.0</div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+
+        <!-- found nothing -->
+        <div class="nf" style="display:none;">
+          <p class="b2 bc5">검색어 "{{ query }}"에 일치하는 정보를 찾지 못했습니다</p>
+          <p class="b2 bc5">단어의 철자 및 띄어쓰기가 정확한지 확인해주세요</p>
+          <p class="b2 bc5">검색어의 단어 수를 줄이거나, 다른 검색어로 검색해보세요</p>
+          <p class="b2 bc5">특수문자를 제외하고 검색해 보세요</p>
+
+          <div class="search">
+            <form action="/search">
+              <input name="q" class="b2 bc1" autocomplete="off" />
+              <input type="submit" class="icon b2" value=""/>
+            </form>
+
+            <!-- auto complete -->
+            <div class="auto_comp">
+              <div class="title b0 bc1">추천 검색어</div>
+              <div class="l">
+                {% set l = range(1,11) %}
+                {% for value in l %}
+                <a href="#" class="i b2 bc1">{{ value }} 프로페시아</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

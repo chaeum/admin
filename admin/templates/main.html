@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  {% block head %}
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/jquery-ui.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/jquery.simpleselect.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/popup.css') }}" />
+
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery-3.2.1.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery-ui.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.simpleselect.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/popup.js') }}"></script>
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  <title>CHAEUM</title>
+  {% endblock %}
+</head>
+
+<body>
+  <div class="bg_popup" style="display:none;"></div>
+  <header>
+    <!-- 최상단 검색바 영역 -->
+    <div class="top">
+      <div class="wrap">
+        <span class="menu">
+          <div class="sub_menu_wrap b3">
+            <a href="#" class="sub_menu bc1">마이페이지</a>|
+            <a id="top_sign_in" href="#" class="sub_menu bc1">로그인</a>|
+            <a id="top_sign_up" href="#" class="sub_menu bc1">회원가입</a>
+          </div>
+          <div class="search">
+            <form action="/search">
+              <input name="q" class="b3 bc1" autocomplete="off" />
+              <input type="submit" class="icon b2" value=""/>
+            </form>
+
+            <!-- auto complete -->
+            <div class="auto_comp" style="display:none;">
+              <div class="title b3 bc1">추천 검색어<icon></icon></div>
+              <div class="list">
+                {% set l = range(1,11) %}
+                {% for value in l %}
+                <a href="#" class="item b3 bc1">{{ value }} 프로페시아</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </div>
+
+    <!-- 네비게이션 바 영역 -->
+    <nav>
+      <div class="wrap">
+        <a href="/index" class="logo"><span></span><img src="{{ url_for('static', filename='images/logo.png') }}" /></a>
+        <div class="menu">
+          <div class="sub_menu_wrap"><div class="b1 bc1" from="hairprds">헤어제품</div></div>
+          <div class="sub_menu_wrap"><div class="b1 bc1">의약품</div></div>
+          <div class="sub_menu_wrap"><div class="b1 bc1" from="hairshops">미용실</div></div>
+          <div class="sub_menu_wrap"><div class="b1 bc1">병∙의원</div></div>
+          <div class="sub_menu_wrap"><div class="b1 ac4">성분</div></div>
+          <div class="sub_menu_wrap"><div class="b1 ac3">매거진</div></div>
+          <div class="sub_menu_wrap"><div class="b1 ac2">게시판</div></div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 서브 네이게이션 바 -->
+    <subnav style="display:none;">
+      <div class="wrap">
+        <div class="menu">
+          <div class="sub_menu_wrap">
+            <a href="/hairprds" class="b2 bc1">국내샴푸</a>
+            <a href="/hairprds" class="b2 bc1">해외샴푸</a>
+            <a href="/hairprds" class="b2 bc1">컨디셔너</a>
+            <a href="/hairprds" class="b2 bc1">흑채</a>
+          </div>
+          <div class="sub_menu_wrap">
+            <a href="#" class="b2 bc1">전문의약품</a>
+            <a href="#" class="b2 bc1">일반의약품</a>
+            <a href="#" class="b2 bc1">의약외품</a>
+          </div>
+          <div class="sub_menu_wrap">
+            <a href="/hairshops" class="b2 bc1">Haeum</a>
+          </div>
+          <div class="sub_menu_wrap">
+            <a href="#" class="b2 bc1">지역별</a>
+            <a href="#" class="b2 bc1">유형별</a>
+            <a href="#" class="b2 bc1">브랜드별</a>
+          </div>
+          <div class="sub_menu_wrap">
+            <a href="#" class="b2 bc1">EWG등급</a>
+            <a href="#" class="b2 bc1">주의성분</a>
+            <a href="#" class="b2 bc1">기능성 성분</a>
+            <a href="#" class="b2 bc1">의약외품 성분</a>
+          </div>
+          <div class="sub_menu_wrap">
+            <a href="#" class="b2 bc1">매거진</a>
+          </div>
+          <div class="sub_menu_wrap">
+            <a href="#" class="b2 bc1">자유게시판</a>
+            <a href="#" class="b2 bc1">묻고답하기</a>
+          </div>
+        </div>
+      </div>
+    </subnav>
+  </header>
+
+  <!-- 컨텐츠 영역 -->
+  <!-- 컨텐츠 영역을 다른 곳에서 상속받아 쓸때는 항상 wrap class(max-height:1200px)를 적어주도록 한다. -->
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- 푸터 영역 -->
+  <footer>
+    <nav>
+      <div class="wrap">
+        <div>
+          <a href="/index" class="logo"><span></span><img src="{{ url_for('static', filename='images/logo.png') }}" /></a>
+          <div class="menu">
+            <div class="sub_menu_wrap">
+              <a class="b1 bc1">헤어제품</a>
+              <a href="/hairprds" class="b2 bc1 detail first">국내샴푸</a>
+              <a href="/hairprds" class="b2 bc1 detail">해외샴푸</a>
+              <a href="/hairprds" class="b2 bc1 detail">컨디셔너</a>
+              <a href="/hairprds" class="b2 bc1 detail">흑채</a>
+            </div>
+            <div class="sub_menu_wrap">
+              <a class="b1 bc1">의약품</a>
+              <a href="#" class="b2 bc1 detail first">전문의약품</a>
+              <a href="#" class="b2 bc1 detail">일반의약품</a>
+              <a href="#" class="b2 bc1 detail">의약외품</a>
+            </div>
+            <div class="sub_menu_wrap">
+              <a class="b1 bc1">미용실</a>
+              <a href="/hairshops" class="b2 bc1 detail first">Haeum</a>
+            </div>
+            <div class="sub_menu_wrap">
+              <a class="b1 bc1">병∙의원</a>
+              <a href="#" class="b2 bc1 detail first">지역별</a>
+              <a href="#" class="b2 bc1 detail">유형별</a>
+              <a href="#" class="b2 bc1 detail">브랜드별</a>
+            </div>
+            <div class="sub_menu_wrap">
+              <a class="b1 ac4">성분</a>
+              <a href="#" class="b2 bc1 detail first">EWG등급</a>
+              <a href="#" class="b2 bc1 detail">주의성분</a>
+              <a href="#" class="b2 bc1 detail">기능성 성분</a>
+              <a href="#" class="b2 bc1 detail">의약외품 성분</a>
+            </div>
+            <div class="sub_menu_wrap">
+              <a class="b1 ac3">매거진</a>
+              <a href="#" class="b2 bc1 detail first">매거진</a>
+            </div>
+            <div class="sub_menu_wrap">
+              <a class="b1 ac2">게시판</a>
+              <a href="#" class="b2 bc1 detail first">자유게시판</a>
+              <a href="#" class="b2 bc1 detail">묻고답하기</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact">
+          <div>
+            <p class="title b1 ac2">(주)더채움</p>
+            <span class="b2 bc1">대표이사 : 정예진</span>
+            <span class="b2 bc1">사업자등록번호 : 000-00-00000</span>
+          </div>
+          <div>
+            <p class="title b1 ac2">CONTACT US</p>
+            <span class="b2 bc1">채움과 제휴를 원하시면 아래 주소로 연락주세요.</span>
+            <span class="b2 bc1"><img src="{{ url_for('static', filename='images/ico_mail.png') }}" />help@the-chaeum.com</span>
+          </div>
+          <div class="last">
+            <p class="title b1 bc1">FAQ</p>
+            <a href="#" class="b2 bc1">이용약관</a>
+            <a href="#" class="b2 bc1">개인정보 취급방침</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </footer>
+  {% include 'popup/frame.html' %}
+</body>
+</html>
