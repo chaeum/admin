@@ -7,17 +7,17 @@ search_parser.add_argument(
     'q', type=str, help='search query'
 )
 
-class AdminIndex(Resource):
+class AdmIndex(Resource):
     def get(self):
         return render_html('index.html')
 
 
-class AdminIcons(Resource):
+class AdmIcons(Resource):
     def get(self):
         return render_html('icons.html')
 
 
-class AdminSearch(Resource):
+class AdmSearch(Resource):
     def get(self):
         args = search_parser.parse_args()
         return render_html('search.html', query=args.q)

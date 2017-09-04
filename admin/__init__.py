@@ -61,9 +61,23 @@ cnx_pool = pooling.MySQLConnectionPool(pool_name="chaeum_pool",
 # api.add_resource(WebHairShopList, '/hairshops')
 # from admin.resources.web.hairshop import WebHairShopDetail
 # api.add_resource(WebHairShopDetail, '/hairshops/<int:hairshop_id>')
-from admin.resources.admin.index import AdminIndex
-api.add_resource(AdminIndex, '/index')
-from admin.resources.admin.index import AdminIcons
-api.add_resource(AdminIcons, '/icons')
-from admin.resources.admin.user import AdminUserList
-api.add_resource(AdminUserList, '/users')
+from admin.resources.admin.index import AdmIndex
+api.add_resource(AdmIndex, '/index')
+from admin.resources.admin.index import AdmIcons
+api.add_resource(AdmIcons, '/icons')
+from admin.resources.admin.user import AdmUserList
+api.add_resource(AdmUserList, '/users')
+from admin.resources.admin.hairprd import AdmHairPrdList
+api.add_resource(AdmHairPrdList, '/hairprds')
+from admin.resources.admin.medicine import AdmMedicineSpecList
+api.add_resource(AdmMedicineSpecList, '/medicines/spec')
+from admin.resources.admin.medicine import AdmMedicineNormList
+api.add_resource(AdmMedicineNormList, '/medicines/norm')
+from admin.resources.admin.medicine import AdmMedicineEtcList
+api.add_resource(AdmMedicineEtcList, '/medicines/etc')
+from admin.resources.admin.clinic import AdmHairClinicList
+api.add_resource(AdmHairClinicList, '/clinics')
+from admin.resources.admin.hairshop import AdmHairShopList
+api.add_resource(AdmHairShopList, '/hairshops')
+from admin.resources.admin.magazine import AdmMagazineList
+api.add_resource(AdmMagazineList, '/magazines')
