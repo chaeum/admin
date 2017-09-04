@@ -12,6 +12,11 @@ class AdminIndex(Resource):
         return render_html('index.html')
 
 
+class AdminIcons(Resource):
+    def get(self):
+        return render_html('icons.html')
+
+
 class AdminSearch(Resource):
     def get(self):
         args = search_parser.parse_args()

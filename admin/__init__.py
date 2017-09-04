@@ -12,7 +12,7 @@ import os
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'testtest'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:wjdrbdud1`@testwebinstance.ciowpdvbzwrs.ap-northeast-2.rds.amazonaws.com:3306/admin'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://admin:chaeum!01@testwebinstance.ciowpdvbzwrs.ap-northeast-2.rds.amazonaws.com:3306/chaeum'
 
 # browser cache ignore for static files
 @app.context_processor
@@ -36,7 +36,7 @@ api = Api(app)
 jwt = JWTManager(app)
 
 db_user = "admin"
-db_pass = "admin!01"
+db_pass = "chaeum!01"
 db_url = "testwebinstance.ciowpdvbzwrs.ap-northeast-2.rds.amazonaws.com"
 db_name = "chaeumTest"
 
@@ -49,15 +49,21 @@ cnx_pool = pooling.MySQLConnectionPool(pool_name="chaeum_pool",
                                                        database=db_name)
 
 
-from admin.resources.web.index import WebIndex
-api.add_resource(WebIndex, '/index')
-from admin.resources.web.index import WebSearch
-api.add_resource(WebSearch, '/search')
-from admin.resources.web.hairprd import WebHairPrdList
-api.add_resource(WebHairPrdList, '/hairprds')
-from admin.resources.web.hairprd import WebHairPrdDetail
-api.add_resource(WebHairPrdDetail, '/hairprds/<int:hairprd_id>')
-from admin.resources.web.hairshop import WebHairShopList
-api.add_resource(WebHairShopList, '/hairshops')
-from admin.resources.web.hairshop import WebHairShopDetail
-api.add_resource(WebHairShopDetail, '/hairshops/<int:hairshop_id>')
+# from admin.resources.web.index import WebIndex
+# api.add_resource(WebIndex, '/index')
+# from admin.resources.web.index import WebSearch
+# api.add_resource(WebSearch, '/search')
+# from admin.resources.web.hairprd import WebHairPrdList
+# api.add_resource(WebHairPrdList, '/hairprds')
+# from admin.resources.web.hairprd import WebHairPrdDetail
+# api.add_resource(WebHairPrdDetail, '/hairprds/<int:hairprd_id>')
+# from admin.resources.web.hairshop import WebHairShopList
+# api.add_resource(WebHairShopList, '/hairshops')
+# from admin.resources.web.hairshop import WebHairShopDetail
+# api.add_resource(WebHairShopDetail, '/hairshops/<int:hairshop_id>')
+from admin.resources.admin.index import AdminIndex
+api.add_resource(AdminIndex, '/index')
+from admin.resources.admin.index import AdminIcons
+api.add_resource(AdminIcons, '/icons')
+from admin.resources.admin.user import AdminUserList
+api.add_resource(AdminUserList, '/users')

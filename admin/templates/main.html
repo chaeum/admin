@@ -2,191 +2,407 @@
 <html lang="ko">
 <head>
   {% block head %}
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/jquery-ui.min.css') }}" />
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/jquery.simpleselect.min.css') }}" />
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/popup.css') }}" />
+  <title>CHAEUM ADMIN</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/metisMenu/metisMenu.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dist/css/sb-admin-2.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/morrisjs/morris.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}" />
 
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery-3.2.1.min.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery-ui.min.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.simpleselect.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/popup.js') }}"></script>
-
-  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-  <title>CHAEUM</title>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
   {% endblock %}
 </head>
 
 <body>
-  <div class="bg_popup" style="display:none;"></div>
-  <header>
-    <!-- 최상단 검색바 영역 -->
-    <div class="top">
-      <div class="wrap">
-        <span class="menu">
-          <div class="sub_menu_wrap b3">
-            <a href="#" class="sub_menu bc1">마이페이지</a>|
-            <a id="top_sign_in" href="#" class="sub_menu bc1">로그인</a>|
-            <a id="top_sign_up" href="#" class="sub_menu bc1">회원가입</a>
-          </div>
-          <div class="search">
-            <form action="/search">
-              <input name="q" class="b3 bc1" autocomplete="off" />
-              <input type="submit" class="icon b2" value=""/>
-            </form>
+  {% block content %}
+  <div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+      </div>
+      <!-- /.navbar-header -->
 
-            <!-- auto complete -->
-            <div class="auto_comp" style="display:none;">
-              <div class="title b3 bc1">추천 검색어<icon></icon></div>
-              <div class="list">
-                {% set l = range(1,11) %}
-                {% for value in l %}
-                <a href="#" class="item b3 bc1">{{ value }} 프로페시아</a>
-                {% endfor %}
+      <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-messages">
+            <li>
+              <a href="#">
+                <div>
+                  <strong>John Smith</strong>
+                  <span class="pull-right text-muted">
+                    <em>Yesterday</em>
+                  </span>
+                </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <strong>John Smith</strong>
+                  <span class="pull-right text-muted">
+                    <em>Yesterday</em>
+                  </span>
+                </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <strong>John Smith</strong>
+                  <span class="pull-right text-muted">
+                    <em>Yesterday</em>
+                  </span>
+                </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a class="text-center" href="#">
+                <strong>Read All Messages</strong>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- /.dropdown-messages -->
+        </li>
+        <!-- /.dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-tasks">
+            <li>
+              <a href="#">
+                <div>
+                  <p>
+                    <strong>Task 1</strong>
+                    <span class="pull-right text-muted">40% Complete</span>
+                  </p>
+                  <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                      <span class="sr-only">40% Complete (success)</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <p>
+                    <strong>Task 2</strong>
+                    <span class="pull-right text-muted">20% Complete</span>
+                  </p>
+                  <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                      <span class="sr-only">20% Complete</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <p>
+                    <strong>Task 3</strong>
+                    <span class="pull-right text-muted">60% Complete</span>
+                  </p>
+                  <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                      <span class="sr-only">60% Complete (warning)</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <p>
+                    <strong>Task 4</strong>
+                    <span class="pull-right text-muted">80% Complete</span>
+                  </p>
+                  <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                      <span class="sr-only">80% Complete (danger)</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a class="text-center" href="#">
+                <strong>See All Tasks</strong>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- /.dropdown-tasks -->
+        </li>
+        <!-- /.dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-alerts">
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-comment fa-fw"></i> New Comment
+                  <span class="pull-right text-muted small">4 minutes ago</span>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                  <span class="pull-right text-muted small">12 minutes ago</span>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-envelope fa-fw"></i> Message Sent
+                  <span class="pull-right text-muted small">4 minutes ago</span>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-tasks fa-fw"></i> New Task
+                  <span class="pull-right text-muted small">4 minutes ago</span>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#">
+                <div>
+                  <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                  <span class="pull-right text-muted small">4 minutes ago</span>
+                </div>
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a class="text-center" href="#">
+                <strong>See All Alerts</strong>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- /.dropdown-alerts -->
+        </li>
+        <!-- /.dropdown -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            </li>
+            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+            </li>
+            <li class="divider"></li>
+            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </li>
+          </ul>
+          <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+      </ul>
+      <!-- /.navbar-top-links -->
+
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+              <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
               </div>
-            </div>
-          </div>
-        </span>
-      </div>
-    </div>
-
-    <!-- 네비게이션 바 영역 -->
-    <nav>
-      <div class="wrap">
-        <a href="/index" class="logo"><span></span><img src="{{ url_for('static', filename='images/logo.png') }}" /></a>
-        <div class="menu">
-          <div class="sub_menu_wrap"><div class="b1 bc1" from="hairprds">헤어제품</div></div>
-          <div class="sub_menu_wrap"><div class="b1 bc1">의약품</div></div>
-          <div class="sub_menu_wrap"><div class="b1 bc1" from="hairshops">미용실</div></div>
-          <div class="sub_menu_wrap"><div class="b1 bc1">병∙의원</div></div>
-          <div class="sub_menu_wrap"><div class="b1 ac4">성분</div></div>
-          <div class="sub_menu_wrap"><div class="b1 ac3">매거진</div></div>
-          <div class="sub_menu_wrap"><div class="b1 ac2">게시판</div></div>
+              <!-- /input-group -->
+            </li>
+            <li>
+              <a href="index"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="flot.html">Flot Charts</a>
+                </li>
+                <li>
+                  <a href="morris.html">Morris.js Charts</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li>
+              <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="panels-wells.html">Panels and Wells</a>
+                </li>
+                <li>
+                  <a href="buttons.html">Buttons</a>
+                </li>
+                <li>
+                  <a href="notifications.html">Notifications</a>
+                </li>
+                <li>
+                  <a href="typography.html">Typography</a>
+                </li>
+                <li>
+                  <a href="icons"> Icons</a>
+                </li>
+                <li>
+                  <a href="grid.html">Grid</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="#">Second Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Second Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level <span class="fa arrow"></span></a>
+                  <ul class="nav nav-third-level">
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                  </ul>
+                  <!-- /.nav-third-level -->
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="blank.html">Blank Page</a>
+                </li>
+                <li>
+                  <a href="login.html">Login Page</a>
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-user fa-fw"></i> 회원관리<span class="fa arrow"></span></a>
+              <ul class="nav nav-second-level">
+                <li>
+                  <a href="users">회원목록</a>
+                </li>
+                <li>
+                  <a href="#">Second Level Item</a>
+                </li>
+                <li>
+                  <a href="#">Third Level <span class="fa arrow"></span></a>
+                  <ul class="nav nav-third-level">
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                    <li>
+                      <a href="#">Third Level Item</a>
+                    </li>
+                  </ul>
+                  <!-- /.nav-third-level -->
+                </li>
+              </ul>
+              <!-- /.nav-second-level -->
+            </li>
+          </ul>
         </div>
+        <!-- /.sidebar-collapse -->
       </div>
+      <!-- /.navbar-static-side -->
     </nav>
-
-    <!-- 서브 네이게이션 바 -->
-    <subnav style="display:none;">
-      <div class="wrap">
-        <div class="menu">
-          <div class="sub_menu_wrap">
-            <a href="/hairprds" class="b2 bc1">국내샴푸</a>
-            <a href="/hairprds" class="b2 bc1">해외샴푸</a>
-            <a href="/hairprds" class="b2 bc1">컨디셔너</a>
-            <a href="/hairprds" class="b2 bc1">흑채</a>
-          </div>
-          <div class="sub_menu_wrap">
-            <a href="#" class="b2 bc1">전문의약품</a>
-            <a href="#" class="b2 bc1">일반의약품</a>
-            <a href="#" class="b2 bc1">의약외품</a>
-          </div>
-          <div class="sub_menu_wrap">
-            <a href="/hairshops" class="b2 bc1">Haeum</a>
-          </div>
-          <div class="sub_menu_wrap">
-            <a href="#" class="b2 bc1">지역별</a>
-            <a href="#" class="b2 bc1">유형별</a>
-            <a href="#" class="b2 bc1">브랜드별</a>
-          </div>
-          <div class="sub_menu_wrap">
-            <a href="#" class="b2 bc1">EWG등급</a>
-            <a href="#" class="b2 bc1">주의성분</a>
-            <a href="#" class="b2 bc1">기능성 성분</a>
-            <a href="#" class="b2 bc1">의약외품 성분</a>
-          </div>
-          <div class="sub_menu_wrap">
-            <a href="#" class="b2 bc1">매거진</a>
-          </div>
-          <div class="sub_menu_wrap">
-            <a href="#" class="b2 bc1">자유게시판</a>
-            <a href="#" class="b2 bc1">묻고답하기</a>
-          </div>
-        </div>
-      </div>
-    </subnav>
-  </header>
-
-  <!-- 컨텐츠 영역 -->
-  <!-- 컨텐츠 영역을 다른 곳에서 상속받아 쓸때는 항상 wrap class(max-height:1200px)를 적어주도록 한다. -->
-  <div class="content">
-    {% block content %}{% endblock %}
   </div>
+  <!-- /#wrapper -->
+  {% endblock %}
 
-  <!-- 푸터 영역 -->
-  <footer>
-    <nav>
-      <div class="wrap">
-        <div>
-          <a href="/index" class="logo"><span></span><img src="{{ url_for('static', filename='images/logo.png') }}" /></a>
-          <div class="menu">
-            <div class="sub_menu_wrap">
-              <a class="b1 bc1">헤어제품</a>
-              <a href="/hairprds" class="b2 bc1 detail first">국내샴푸</a>
-              <a href="/hairprds" class="b2 bc1 detail">해외샴푸</a>
-              <a href="/hairprds" class="b2 bc1 detail">컨디셔너</a>
-              <a href="/hairprds" class="b2 bc1 detail">흑채</a>
-            </div>
-            <div class="sub_menu_wrap">
-              <a class="b1 bc1">의약품</a>
-              <a href="#" class="b2 bc1 detail first">전문의약품</a>
-              <a href="#" class="b2 bc1 detail">일반의약품</a>
-              <a href="#" class="b2 bc1 detail">의약외품</a>
-            </div>
-            <div class="sub_menu_wrap">
-              <a class="b1 bc1">미용실</a>
-              <a href="/hairshops" class="b2 bc1 detail first">Haeum</a>
-            </div>
-            <div class="sub_menu_wrap">
-              <a class="b1 bc1">병∙의원</a>
-              <a href="#" class="b2 bc1 detail first">지역별</a>
-              <a href="#" class="b2 bc1 detail">유형별</a>
-              <a href="#" class="b2 bc1 detail">브랜드별</a>
-            </div>
-            <div class="sub_menu_wrap">
-              <a class="b1 ac4">성분</a>
-              <a href="#" class="b2 bc1 detail first">EWG등급</a>
-              <a href="#" class="b2 bc1 detail">주의성분</a>
-              <a href="#" class="b2 bc1 detail">기능성 성분</a>
-              <a href="#" class="b2 bc1 detail">의약외품 성분</a>
-            </div>
-            <div class="sub_menu_wrap">
-              <a class="b1 ac3">매거진</a>
-              <a href="#" class="b2 bc1 detail first">매거진</a>
-            </div>
-            <div class="sub_menu_wrap">
-              <a class="b1 ac2">게시판</a>
-              <a href="#" class="b2 bc1 detail first">자유게시판</a>
-              <a href="#" class="b2 bc1 detail">묻고답하기</a>
-            </div>
-          </div>
-        </div>
-        <div class="contact">
-          <div>
-            <p class="title b1 ac2">(주)더채움</p>
-            <span class="b2 bc1">대표이사 : 정예진</span>
-            <span class="b2 bc1">사업자등록번호 : 000-00-00000</span>
-          </div>
-          <div>
-            <p class="title b1 ac2">CONTACT US</p>
-            <span class="b2 bc1">채움과 제휴를 원하시면 아래 주소로 연락주세요.</span>
-            <span class="b2 bc1"><img src="{{ url_for('static', filename='images/ico_mail.png') }}" />help@the-chaeum.com</span>
-          </div>
-          <div class="last">
-            <p class="title b1 bc1">FAQ</p>
-            <a href="#" class="b2 bc1">이용약관</a>
-            <a href="#" class="b2 bc1">개인정보 취급방침</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </footer>
-  {% include 'popup/frame.html' %}
+  {% block tail %}
+  <!-- jQuery -->
+  <script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='vendor/metisMenu/metisMenu.min.js') }}"></script>
+
+  <!-- Morris Charts JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='vendor/raphael/raphael.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='vendor/morrisjs/morris.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='data/morris-data.js') }}"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='dist/js/sb-admin-2.js') }}"></script>
+  {% endblock %}
 </body>
 </html>
