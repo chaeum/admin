@@ -9,7 +9,7 @@ search_parser.add_argument(
 
 class AdmIndex(Resource):
     def get(self):
-        return render_html('index.html')
+        return render_html('index.html', name='Chaeum name')
 
 
 class AdmIcons(Resource):
